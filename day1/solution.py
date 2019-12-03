@@ -1,20 +1,24 @@
 def part1(lines):
+    return sum([i // 3 - 2 for i in lines])
+
+def part1Alt(lines):
     sum = 0
     for i in lines:
-        sum += int(i) // 3 - 2
+        sum += i // 3 - 2
     return sum
-    
+
 def part2(lines):
     sum = 0
-    while len(lines) > 0:
-        i = int(lines.pop()) // 3 - 2
-        if i > 0:
-            sum += i
-            lines.append(i)
+    for i in lines:
+        while i > 0:
+            i = i // 3 - 2
+            if i > 0:
+                sum += i
     return sum
 
 if __name__ == '__main__':
     with open('input.txt', 'r') as f:
-        lines = f.read().splitlines()
+        lines = [int(i) for i in f.read().splitlines()]
     print(part1(lines))
+    print(part1Alt(lines))
     print(part2(lines))
