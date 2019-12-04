@@ -21,11 +21,7 @@ def part1(nums):
     
 def hasDouble(num):
     for i in range(0, 10):
-        count = 0
-        for j in str(num):
-            if int(j) == i:
-                count += 1
-        if count == 2:
+        if str(num).count(str(i)) == 2:
             return True
     return False
     
